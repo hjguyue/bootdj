@@ -1,1 +1,11 @@
-p {background-color:green;}
+p {
+	background-color:white;
+}
+
+#top {
+	padding: 20px;
+}
+
+img {
+	padding: 10px;
+}

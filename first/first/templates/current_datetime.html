@@ -2,11 +2,41 @@
 {% load staticfiles %}
 <html>
 <head>
+	<title>Hello world!</title>
+	<link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet" media="screen">
 	<link href="{% static "css/style.css"%}" rel="stylesheet">
 </head>
 
 <body>
-	<p>It is {{current_date}} now. </p>
-	<p>Name</p>
+	<div class="container marketing">
+		<div class="text-center" id = "top">
+			<p>It is {{current_date}} now. </p>
+			<input type="email" placeholder="Text input">
+		</div>
+		<div class="text-center">
+			<img src="{% static "source/img3.jpg"%}" class="img-thumbnail" alt="">
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<ul>
+					<li>name</li>
+					<ul><li>name1</li><li>name2</li></ul>
+					<li>address</li>
+					<ul><li>address1</li><li>address2</li></ul>
+					<li>phone</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<table class="table table-striped table-bordered table-hover">
+					<tr><td>name</td><td>id</td></tr>
+					<tr><td>Tom</td><td>1234</td></tr>
+					<tr><td>Tom</td><td>1234</td></tr>
+					<tr><td>Tom</td><td>1234</td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="{% static "js/jquery.min.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
 </body>
 </html>
