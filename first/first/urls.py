@@ -5,6 +5,7 @@ admin.autodiscover()
 
 from views import hello
 from views import current_datetime
+from views import display_meta
 
 urlpatterns = patterns('',
     # Examples:
@@ -14,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url('^hello/$', hello),
     url('^time/$', current_datetime),
+    url('^display/$', display_meta),
 )

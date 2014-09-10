@@ -8,6 +8,14 @@ import datetime
 def hello(request):
     return HttpResponse("Hello world")
 
+def display_meta(request):
+    values = request.META.items()
+    values.sort()
+    html = []
+    for k, v in values:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
 def current_datetime(request):
     # now = datetime.datetime.now()
     # html = "<html><body>It is now %s.</body></html>" % now
@@ -18,5 +26,6 @@ def current_datetime(request):
     # html = t.render(Context({'current_date': now}))
     # return HttpResponse(html)
 
-    current_date = datetime.datetime.now()
+    # current_date = datetime.datetime.now()
+
     return render_to_response("current_datetime.html", locals())
