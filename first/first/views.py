@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 import datetime
 
+from books.models import Publisher
 
 def hello(request):
     return HttpResponse("Hello world")
@@ -16,6 +17,10 @@ def display_meta(request):
         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
 
+def showDB(request):
+    objects = Publisher.objects.all()
+    return render_to_response("current_datetime.html", locals())
+
 def current_datetime(request):
     # now = datetime.datetime.now()
     # html = "<html><body>It is now %s.</body></html>" % now
@@ -26,6 +31,5 @@ def current_datetime(request):
     # html = t.render(Context({'current_date': now}))
     # return HttpResponse(html)
 
-    # current_date = datetime.datetime.now()
-
+    current_date = datetime.datetime.now()
     return render_to_response("current_datetime.html", locals())

@@ -6,6 +6,7 @@ admin.autodiscover()
 from views import hello
 from views import current_datetime
 from views import display_meta
+from views import showDB
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,4 +17,5 @@ urlpatterns = patterns('',
     url('^hello/$', hello),
     url('^time/$', current_datetime),
     url('^display/$', display_meta),
+    url('^showDB/$', showDB),
 )
