@@ -7,6 +7,8 @@ from views import hello
 from views import current_datetime
 from views import display_meta
 from views import showDB
+from views import search_form
+from views import search
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,4 +20,6 @@ urlpatterns = patterns('',
     url('^time/$', current_datetime),
     url('^display/$', display_meta),
     url('^showDB/$', showDB),
+    url('^search-form/$', search_form),
+    url('^search/$', search),
 )

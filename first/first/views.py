@@ -16,6 +16,7 @@ def display_meta(request):
     for k, v in values:
         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+    # return HttpResponse(request.get_full_path() + "")
 
 def showDB(request):
     objects = Publisher.objects.all()
@@ -33,3 +34,15 @@ def current_datetime(request):
 
     current_date = datetime.datetime.now()
     return render_to_response("current_datetime.html", locals())
+
+def search_form(request):
+    return render_to_response("search_form.html", locals())
+
+def search(request):
+    if 'q' in request.GET:
+        q = request.GET['q']
+        publishers = Publisher.objects.filter(name__icontains=q)
+        return render_to_response("search_results.html", {'publishers':publishers, "q":q})
+    else:
+        return HttpResponse('Please submit a search term.')
+
