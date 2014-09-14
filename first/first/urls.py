@@ -7,7 +7,7 @@ from views import hello
 from views import current_datetime
 from views import display_meta
 from views import showDB
-from views import search
+from books.views import search
 
 urlpatterns = patterns('',
     # Examples:
