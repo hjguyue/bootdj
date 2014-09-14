@@ -35,14 +35,19 @@ def current_datetime(request):
     current_date = datetime.datetime.now()
     return render_to_response("current_datetime.html", locals())
 
-def search_form(request):
-    return render_to_response("search_form.html", locals())
+# def search_form(request):
+#     return render_to_response("search_form.html", locals())
 
 def search(request):
+    errors = []
     if 'q' in request.GET:
         q = request.GET['q']
-        publishers = Publisher.objects.filter(name__icontains=q)
-        return render_to_response("search_results.html", {'publishers':publishers, "q":q})
-    else:
-        return HttpResponse('Please submit a search term.')
+        if not q:
+            errors.append('Enter a search term.')
+        elif len(q) > 20:
+            errors.append('Please enter at most 20 characters.')
+        else:
+            publishers = Publisher.objects.filter(name__icontains=q)
+            return render_to_response("search_results.html", {'publishers':publishers, "q":q})
+    return render_to_response('search_form.html', {'errors': errors})
 
