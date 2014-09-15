@@ -16,13 +16,23 @@ def contact(request):
     #         publishers = Publisher.objects.filter(name__icontains=q)
     #         return render_to_response("search_results.html", {'publishers':publishers, "q":q})
     errors = []
+    subject = ''
+    message = ''
+    email = ''
+    
     if request.method == "POST":
-        if not request.POST.get('subject', ''):
+        subject = request.POST.get('subject', '')
+        if not subject:
             errors.append('Enter a subject.') 
-        if not request.POST.get('message', ''):
+
+        message = request.POST.get('message', '')
+        if not message:
             errors.append('Enter a message.')
-        if request.POST.get('email') and '@' not in request.POST['email']:
+
+        email = request.POST.get('email','')
+        if email and '@' not in request.POST['email']:
             errors.append('Enter a valid e-mail address.')
+        
         if not errors:
             # send_mail(
             #     request.POST['subject'], 
@@ -31,7 +41,7 @@ def contact(request):
             #     ['siteowner@example.com'],
             #     )
             return HttpResponseRedirect('thanks/')
-    return render_to_response('contact_form.html', {'errors': errors})
+    return render_to_response('contact_form.html', {'errors': errors, 'subject': subject, 'message':message, 'email':email})
 
 def thanks(request):
     return render_to_response('thanks.html')
