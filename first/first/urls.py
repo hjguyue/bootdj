@@ -8,6 +8,8 @@ from views import current_datetime
 from views import display_meta
 from views import showDB
 from books.views import search
+from contact.views import contact
+from contact.views import thanks
 
 urlpatterns = patterns('',
     # Examples:
@@ -20,4 +22,6 @@ urlpatterns = patterns('',
     url('^display/$', display_meta),
     url('^showDB/$', showDB),
     url('^search/$', search),
+    url('^contact/$', contact),
+    url('^contact/thanks/$', thanks),
 )
